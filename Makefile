@@ -13,9 +13,7 @@ build: ${TARBALL}
 
 push:
 	sudo docker tag ${IMAGE} ${IMAGE}:${VERSION}
-	sudo docker push ${IMAGE}:${VERSION}
 	sudo docker tag ${IMAGE} ${IMAGE}:${DATE}
-	sudo docker push ${IMAGE}:${DATE}
 	sudo docker push ${IMAGE}
 
 ${TARBALL}:
