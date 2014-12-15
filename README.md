@@ -13,5 +13,10 @@ Control with container environment variables (`--env=...`):
 
 (As you can see, I prefer to not set up container "links", instead using `--net=host`.)
 
-See the Dockerfile at https://github.com/ploxiln/docker-statsdaemon
-Built images are on Docker Hub at https://registry.hub.docker.com/u/ploxiln/statsdaemon/
+See the Dockerfile on [GitHub](https://github.com/ploxiln/docker-statsdaemon)
+
+Built images are on [Docker Hub](https://registry.hub.docker.com/u/ploxiln/statsdaemon/)
+
+*TIP*: there are version and date tags on Docker Hub
+
+LICENSE only applies to what is in this repo, not the image contents
