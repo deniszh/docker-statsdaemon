@@ -1,7 +1,7 @@
 FROM busybox:ubuntu-14.04
 MAINTAINER Pierce Lopez <pierce.lopez@gmail.com>
 
-EXPOSE 8125
+EXPOSE 8125/udp
 
 ENV ADDRESS  127.0.0.1:8125
 ENV GRAPHITE 127.0.0.1:2003
