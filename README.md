@@ -1,6 +1,6 @@
 # statsdaemon docker image
 
-Tiny image (8.8 MiB), based on busybox,
+Tiny image (9 MiB), based on busybox,
 for running [statsdaemon](https://github.com/bitly/statsdaemon).
 
 Control with container environment variables (`--env=...`):
@@ -15,7 +15,7 @@ Control with container environment variables (`--env=...`):
 
 See the Dockerfile on [GitHub](https://github.com/ploxiln/docker-statsdaemon)
 
-Built images are on [Docker Hub](https://registry.hub.docker.com/u/ploxiln/statsdaemon/)
+Built images are on [Docker Hub](https://hub.docker.com/r/ploxiln/statsdaemon/)
 
 *TIP*: there are version and date tags on Docker Hub
 
