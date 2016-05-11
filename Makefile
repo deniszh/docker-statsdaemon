@@ -10,14 +10,22 @@ DATE := $(shell date +%Y-%m-%d)
 BASE_IMAGE = $(shell awk '/^FROM/ {print $$2}' Dockerfile)
 
 build: ${TARBALL}
-	${DOCKER} pull ${BASE_IMAGE}
 	tar -x --strip-components 1 -f ${TARBALL}
+	${DOCKER} pull ${BASE_IMAGE}
+	${DOCKER} build --tag=${IMAGE} .
+
+build-src:
+	# assuming ../statsdaemon is checked out to the desired revision
+	./build-src.sh
+	${DOCKER} pull ${BASE_IMAGE}
 	${DOCKER} build --tag=${IMAGE} .
 
 push:
-	${DOCKER} tag ${IMAGE} ${IMAGE}:${VERSION}
-	${DOCKER} tag ${IMAGE} ${IMAGE}:${DATE}
-	${DOCKER} push ${IMAGE}
+	${DOCKER} tag -f ${IMAGE} ${IMAGE}:${VERSION}
+	${DOCKER} tag -f ${IMAGE} ${IMAGE}:${DATE}
+	${DOCKER} push ${IMAGE}:${VERSION}
+	${DOCKER} push ${IMAGE}:${DATE}
+	${DOCKER} push ${IMAGE}:latest
 
 ${TARBALL}:
 	wget https://github.com/bitly/statsdaemon/releases/download/v${VERSION}/${TARBALL}

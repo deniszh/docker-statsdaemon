@@ -1,4 +1,4 @@
-FROM busybox:ubuntu-14.04
+FROM busybox
 MAINTAINER Pierce Lopez <pierce.lopez@gmail.com>
 
 EXPOSE 8125/udp
