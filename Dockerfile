@@ -1,6 +1,6 @@
 FROM golang:1.9-alpine
 
-RUN apk update && apk add git curl
+RUN apk update && apk add git
 RUN git clone https://github.com/bitly/statsdaemon.git /home/statsdaemon
 RUN cd /home/statsdaemon && CGO_ENABLED=0 go build -ldflags="-s -w"
 
@@ -15,6 +15,7 @@ ENV PERCENTILES    90,99
 
 COPY --from=0 /home/statsdaemon/statsdaemon /usr/local/bin/
 
+USER nobody
 CMD exec statsdaemon --address=$ADDRESS               \
                      --graphite=$GRAPHITE             \
                      --prefix=$PREFIX                 \
