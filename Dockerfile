@@ -7,6 +7,7 @@ RUN cd /home/statsdaemon && CGO_ENABLED=0 go build -ldflags="-s -w"
 FROM busybox
 
 EXPOSE 8125/udp
+EXPOSE 8125/tcp
 ENV ADDRESS  127.0.0.1:8125
 ENV GRAPHITE 127.0.0.1:2003
 ENV FLUSH_INTERVAL 60
@@ -17,6 +18,7 @@ COPY --from=0 /home/statsdaemon/statsdaemon /usr/local/bin/
 
 USER nobody
 CMD exec statsdaemon --address=$ADDRESS               \
+                     --tcpaddr=$ADDRESS               \
                      --graphite=$GRAPHITE             \
                      --prefix=$PREFIX                 \
                      --flush-interval=$FLUSH_INTERVAL \
